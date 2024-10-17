@@ -1,0 +1,52 @@
+
+
+   .form-wrapper {
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+  }
+  
+  .form-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-container {
+    height: 30vh; 
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .MuiTextField-root {
+    width: 100%;
+  }
+  
+  form .MuiTextField-root {
+    width: 95%; 
+  }
+  
+  .custom-input {
+    height: 35px; 
+  }
+  
+  form .MuiGrid-item {
+    width: 30%; 
+    margin-bottom: 10px;
+  }
+  
+  .submit-button-container {
+    margin-top: 20px;
+  }
+  
+  .submit-button {
+    width: 150px;
+  }
+
+
+  .custom-input .MuiInputBase-input {
+    height: 25px;         
+    padding: 5px 10px;    
+  }
+  
+  

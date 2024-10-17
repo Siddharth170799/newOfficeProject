@@ -1,0 +1,146 @@
+/* 
+.sidebar {
+  margin: 10px;
+  border-radius: 10px;
+  width: 250px;
+  height: 95vh;
+  background-color: #2b3e50;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar-header {
+  padding: 20px;
+  background-color: #1f2d3b;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.sidebar-menu {
+  margin-top: 30px;
+}
+
+.menu-item {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  color: #f1f1f1;
+  transition: background 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: #374a60;
+}
+
+.dropdown-menu {
+  padding-left: 20px;
+  background-color: #1f2d3b;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 0;
+  color: #d1d9e6;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  color: #f9b238;
+}
+
+.fas.fa-chevron-down, .fas.fa-chevron-up {
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover .fas.fa-chevron-down, 
+.menu-item:hover .fas.fa-chevron-up {
+  transform: rotate(180deg);
+}
+
+.menu-item i {
+  transition: color 0.3s ease;
+}
+
+.menu-item:hover i {
+  color: #f9b238;
+} */
+
+
+
+/* ../css/SideBar.css */
+
+.sidebar {
+  position: fixed;
+  border-radius: 10px;
+  margin: 10px;
+  top: 0;
+  left: 0;
+  height: 95vh;
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+  transition: all 0.3s ease;
+  transform: translateX(-250px);
+}
+
+.sidebar.active {
+  transform: translateX(0);
+}
+
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid #444;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+}
+
+.sidebar-menu {
+  padding: 20px;
+}
+
+.menu-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background-color: #444;
+}
+
+.dropdown-menu {
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+}
+
+.menu-item:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  color: #fff;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: #444;
+}

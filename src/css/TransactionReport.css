@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+}
+
+.sidebar {
+  flex-shrink: 0;
+}
+
+.form-container {
+  flex-grow: 1;
+}
