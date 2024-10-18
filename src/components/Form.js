@@ -28,9 +28,7 @@ const Form = () => {
     setStatusType(event.target.value);
   };
 
-  const clearStatus = () => {
-    setStatusType("");
-  };
+
   const fromDateFormatted = fromDate
     ? dayjs(fromDate).format("YYYY-MM-DD")
     : null;
@@ -57,7 +55,7 @@ const Form = () => {
               <DateRangePicker
                 fromDates={handleFromDate}
                 toDates={handleToDate}
-                clearStatus={clearStatus}
+              
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -70,6 +68,7 @@ const Form = () => {
                 value={statusType}
                 options={statusOptions}
                 onChange={handleDropdownChangeStatusType}
+               
               />
             </Grid>
 
@@ -89,7 +88,7 @@ const Form = () => {
         statusType={statusType}
         fromDate={fromDateFormatted}
         toDate={toDateFormatted}
-        clearStatus={clearStatus}
+       
       />
     </>
   );

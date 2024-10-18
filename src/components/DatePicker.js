@@ -88,7 +88,7 @@ import dayjs from "dayjs";
 import transactions from "../data/data"; // Adjust the path as necessary
 import TransactionTable from "./TransactionTable";
 
-const DateRangePicker = ({fromDates,toDates,clearStatus}) => {
+const DateRangePicker = ({fromDates,toDates}) => {
   const [data, setData] = useState(transactions);
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
@@ -98,7 +98,7 @@ const DateRangePicker = ({fromDates,toDates,clearStatus}) => {
   const fromDateFormatted = fromDate ? dayjs(fromDate).format("YYYY-MM-DD") : null;
   const toDateFormatted = toDate ? dayjs(toDate).format("YYYY-MM-DD") : null;
 
-  const checking = () => {
+  const checkingDateFormat = () => {
     const details3 = data.filter((item) => {
       // Ensure item.transactionDate is in the same format
       const transactionDate = dayjs(item.transactionDate).format("YYYY-MM-DD");
@@ -113,10 +113,13 @@ const DateRangePicker = ({fromDates,toDates,clearStatus}) => {
   };
 
   useEffect(() => {
-    fromDates(fromDateFormatted)
-    toDates(toDateFormatted)
-    checking(); // Call filtering function whenever fromDate or toDate changes
-  }, [fromDate, toDate,clearStatus]);
+    if(fromDate && toDate){
+      fromDates(fromDateFormatted)
+      toDates(toDateFormatted)
+      checkingDateFormat();
+    }
+    // Call filtering function whenever fromDate or toDate changes
+  }, [fromDate, toDate]);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>

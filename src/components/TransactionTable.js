@@ -15,58 +15,63 @@ const TransactionTable = ({
   transactionType,
   fromDate,
   toDate,
-  clearStatus,
 }) => {
   const [data, setData] = useState(transactions);
   const [display, setDisplay] = useState(null);
 
   function filteredData() {
-    const details3 = data.filter(
+    const filteredByDate = data.filter(
       (item) =>
         item.transactionDate >= fromDate && item.transactionDate <= toDate
     );
-    setDisplay(details3);
+    setDisplay(filteredByDate);
 
-    if (details3.length > 0 && statusType) {
-      const details = details3.filter(
+    if (filteredByDate.length > 0 && statusType) {
+      const filteredByStatus = filteredByDate.filter(
         (item) => item.transactionStatus == statusType
       );
-      setDisplay(details);
+      setDisplay(filteredByStatus);
     }
-    if(statusType){
-      const details = data.filter((item)=>  item.transactionStatus == statusType) 
-      setDisplay(details)
+
+    if (statusType) {
+      const filteredStatusOnly = data.filter(
+        (item) => item.transactionStatus == statusType
+      );
+      setDisplay(filteredStatusOnly);
     }
 
     if (fromDate && toDate && statusType && transactionType) {
-      const details5 = data.filter(
+      const filteredByAll = data.filter(
         (item) =>
           item.transactionDate >= fromDate &&
           item.transactionDate <= toDate &&
           item.transactionStatus == statusType &&
           item.PayType == transactionType
       );
-      setDisplay(details5);
+      setDisplay(filteredByAll);
     } else if (transactionType && statusType) {
-      const details4 = data.filter(
+      const filteredByStatusAndType = data.filter(
         (item) =>
           item.PayType == transactionType &&
           item.transactionStatus == statusType
       );
-      setDisplay(details4);
+      setDisplay(filteredByStatusAndType);
     } else if (transactionType && fromDate && toDate) {
-      const details4 = data.filter(
+      const filteredByTypeAndDate = data.filter(
         (item) =>
           item.PayType == transactionType &&
           item.transactionDate >= fromDate &&
           item.transactionDate <= toDate
       );
-      setDisplay(details4);
+      setDisplay(filteredByTypeAndDate);
     } else if (transactionType) {
-      const details4 = data.filter((item) => item.PayType == transactionType);
-      setDisplay(details4);
+      const filteredByTypeOnly = data.filter(
+        (item) => item.PayType == transactionType
+      );
+      setDisplay(filteredByTypeOnly);
     }
   }
+
   useEffect(() => {
     if (fromDate || transactionType || toDate || statusType) {
       filteredData();
