@@ -5,13 +5,19 @@ import DateRangePicker from "./DatePicker";
 import UniversalDropdown from "./UniversalDropdown";
 import TransactionTable from "./TransactionTable";
 import dayjs from "dayjs";
-
+import { handlePhoneNumberValidation } from "../validations/validations";
 const Form = () => {
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [transactionType, setTransactionType] = useState("");
   const [statusType, setStatusType] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumberError, setPhoneNumberError] = useState("");
 
+  const handlePhoneNumberChange = (event) => {
+    setPhoneNumber(event.target.value);
+    setPhoneNumberError(handlePhoneNumberValidation(event.target.value));
+  };
   const handleFromDate = (date) => {
     setFromDate(date);
   };
@@ -28,7 +34,6 @@ const Form = () => {
     setStatusType(event.target.value);
   };
 
-
   const fromDateFormatted = fromDate
     ? dayjs(fromDate).format("YYYY-MM-DD")
     : null;
@@ -44,7 +49,7 @@ const Form = () => {
     { value: "Failed", label: "Failed" },
     { value: "Pending", label: "Pending" },
   ];
-  
+  console.log(phoneNumber);
   return (
     <>
       <Box className="form-wrapper">
@@ -55,11 +60,15 @@ const Form = () => {
               <DateRangePicker
                 fromDates={handleFromDate}
                 toDates={handleToDate}
-              
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <InputBar>Mobile Number</InputBar>
+              <InputBar onChange={handlePhoneNumberChange}>
+                Mobile Number
+              </InputBar>
+              {phoneNumberError && (
+                <div style={{ color: "red" }}>{phoneNumberError}</div>
+              )}
             </Grid>
 
             <Grid item xs={12} sm={6}>
@@ -68,7 +77,6 @@ const Form = () => {
                 value={statusType}
                 options={statusOptions}
                 onChange={handleDropdownChangeStatusType}
-               
               />
             </Grid>
 
@@ -88,7 +96,7 @@ const Form = () => {
         statusType={statusType}
         fromDate={fromDateFormatted}
         toDate={toDateFormatted}
-       
+        phoneNumber={phoneNumber}
       />
     </>
   );
