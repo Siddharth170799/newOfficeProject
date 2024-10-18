@@ -32,11 +32,10 @@ const TransactionTable = ({
         (item) => item.transactionStatus == statusType
       );
       setDisplay(details);
-    } else if (details3.length == 0) {
-      const details = data.filter(
-        (item) => item.transactionStatus == statusType
-      );
-      setDisplay(details);
+    }
+    if(statusType){
+      const details = data.filter((item)=>  item.transactionStatus == statusType) 
+      setDisplay(details)
     }
 
     if (fromDate && toDate && statusType && transactionType) {
